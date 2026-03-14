@@ -1,0 +1,62 @@
+// Persona.java
+public class Persona {
+
+    protected String nombre;
+    protected int edad;
+
+    public Persona(String nombre, int edad) {
+        this.nombre = nombre;
+        this.edad = edad;
+    }
+
+    public void mostrarDatos() {
+        System.out.println("Nombre: " + nombre);
+        System.out.println("Edad: " + edad);
+    }
+}
+// Estudiante.java
+public class Estudiante extends Persona {
+
+    private double nota1;
+    private double nota2;
+    private double nota3;
+
+    public Estudiante(String nombre, int edad, double nota1, double nota2, double nota3) {
+        super(nombre, edad);
+        this.nota1 = nota1;
+        this.nota2 = nota2;
+        this.nota3 = nota3;
+    }
+
+    public double calcularPromedio() {
+        return (nota1 + nota2 + nota3) / 3;
+    }
+
+    public boolean aprobo() {
+        return calcularPromedio() >= 60;
+    }
+
+    public void mostrarInformacion() {
+        mostrarDatos();
+        System.out.println("Promedio: " + calcularPromedio());
+
+        if (aprobo()) {
+            System.out.println("Estado: Aprobado");
+        } else {
+            System.out.println("Estado: Reprobado");
+        }
+    }
+}
+// Main.java
+public class Main {
+
+    public static void main(String[] args) {
+
+        Estudiante estudiante1 = new Estudiante("Juan Pérez", 20, 75, 80, 70);
+        Estudiante estudiante2 = new Estudiante("Ana Gómez", 22, 50, 55, 45);
+
+        estudiante1.mostrarInformacion();
+        System.out.println("---------------------");
+        estudiante2.mostrarInformacion();
+    }
+}
