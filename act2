@@ -1,43 +1,43 @@
-public class Estudiante {
+// Persona.java
+public class Persona {
 
-    // Atributos
-    private String nombre;
-    private int edad;
+    protected String nombre;
+    protected int edad;
+
+    public Persona(String nombre, int edad) {
+        this.nombre = nombre;
+        this.edad = edad;
+    }
+
+    public void mostrarDatos() {
+        System.out.println("Nombre: " + nombre);
+        System.out.println("Edad: " + edad);
+    }
+}
+// Estudiante.java
+public class Estudiante extends Persona {
+
     private double nota1;
     private double nota2;
     private double nota3;
 
-    /**
-     * Constructor de la clase Estudiante
-     */
     public Estudiante(String nombre, int edad, double nota1, double nota2, double nota3) {
-        this.nombre = nombre;
-        this.edad = edad;
+        super(nombre, edad);
         this.nota1 = nota1;
         this.nota2 = nota2;
         this.nota3 = nota3;
     }
 
-    /**
-     * Método para calcular el promedio
-     */
     public double calcularPromedio() {
         return (nota1 + nota2 + nota3) / 3;
     }
 
-    /**
-     * Método para verificar si el estudiante aprobó
-     */
     public boolean aprobo() {
         return calcularPromedio() >= 60;
     }
 
-    /**
-     * Método para mostrar información del estudiante
-     */
     public void mostrarInformacion() {
-        System.out.println("Nombre: " + nombre);
-        System.out.println("Edad: " + edad);
+        mostrarDatos();
         System.out.println("Promedio: " + calcularPromedio());
 
         if (aprobo()) {
@@ -47,18 +47,16 @@ public class Estudiante {
         }
     }
 }
-
+// Main.java
 public class Main {
 
     public static void main(String[] args) {
 
-        // Instanciación de objetos
         Estudiante estudiante1 = new Estudiante("Juan Pérez", 20, 75, 80, 70);
         Estudiante estudiante2 = new Estudiante("Ana Gómez", 22, 50, 55, 45);
 
-        // Uso de métodos
         estudiante1.mostrarInformacion();
-        System.out.println("----------------------");
+        System.out.println("---------------------");
         estudiante2.mostrarInformacion();
     }
 }
